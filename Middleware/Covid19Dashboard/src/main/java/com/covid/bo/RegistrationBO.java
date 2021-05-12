@@ -1,40 +1,35 @@
 package com.covid.bo;
 
 public class RegistrationBO {
-	private String userName;
-	private int password;
-	private String userEmail;
-	private String sex;
-	private String date;
+	private String name;
+	private int password1;
+	private String email;
+	private String phone;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getPassword1() {
+		return password1;
+	}
+	public void setPassword1(String password1) {
+		if(password1.length()>5)
+			this.password1 = password1.hashCode();		
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public int getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password.hashCode();
-	}
-	public String getUserEmail() {
-		return userEmail;
-	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
-	public String getSex() {
-		return sex;
-	}
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
+		
 }
