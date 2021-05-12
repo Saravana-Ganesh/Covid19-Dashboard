@@ -1,0 +1,7 @@
+{  
+    "/Covid19Dashboard/*": {  
+       "target": "http://localhost:8080/Covid19Dashboard",  
+       "secure": false,  
+       "logLevel": "debug"  
+    }  
+ } 

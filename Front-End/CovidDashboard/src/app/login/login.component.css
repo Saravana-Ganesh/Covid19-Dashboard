@@ -5,7 +5,7 @@ align-content: center;
 
 .card{
 height: 370px;
-margin-top: 15%;
+margin-top: 10%;
 margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
@@ -22,9 +22,9 @@ color: white;
 cursor: pointer;
 }
 
-.card-header h3{
-color: white;
-}
+/* .card-header h3{
+color: #6b6969;
+} */
 
 .social_icon{
 position: absolute;
@@ -46,7 +46,7 @@ box-shadow: 0 0 0 0 !important;
 }
 
 .remember{
-color: white;
+color:#6b6969;/*  white; */
 }
 
 .remember input
@@ -69,17 +69,23 @@ background-color: white;
 }
 
 .links{
-color: white;
+color: #6b6969/* white */;
 }
 
 .links a{
 margin-left: 4px;
-color: #ccdef2;
+color:#000102; /* #ccdef2; */
 }
 a{
-    color: #ccdef2;
+    color:#000102 /* #ccdef2; */
 }
 .loginContainer{
     background-color: #cccccc;
     height: 100%;  
+}
+.customClass{
+    background-color:rgb(241 240 240 / 50%) !important;/* rgb(139 135 135 / 50%) !important */
+}
+.loginformText h3{
+    color:#6b6969;
 }
