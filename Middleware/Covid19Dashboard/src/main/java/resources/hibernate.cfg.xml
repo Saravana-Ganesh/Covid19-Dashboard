@@ -13,9 +13,6 @@
 			<property name="hbm2ddl.auto">update</property>
 			<property name="dialet">org.hibernate.dialect.Oracle10gDialect</property>
 			<!-- Related to the connection END -->
-			<mapping class="com.media.bo.AccountMasterBO"/>
-			<mapping class="com.media.bo.FriendsMasterBO"/>
-			<mapping class="com.media.bo.FriendRequestMasterBO"/>
-			<mapping class="com.media.bo.MessageBO"/>
+			<mapping class="com.covid.bo.RegistrationBO"/>		
 		</session-factory>
 </hibernate-configuration>

@@ -78,10 +78,24 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- jar for getting json objects from front-end-->
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.10.0.pr2</version>
+		</dependency>
+		<!-- Hibernate Jar -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.3.1.Final</version>
+		</dependency>
+		<!--Database driver jar-->
+		<dependency>
+		    <groupId>com.oracle</groupId>
+		    <artifactId>HibernateMaven</artifactId>
+		    <version>4.0.0</version> 
+		    <scope>compile</scope>
 		</dependency>
 	</dependencies>
 	
