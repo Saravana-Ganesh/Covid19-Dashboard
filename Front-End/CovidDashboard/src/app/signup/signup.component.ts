@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { UserDetails } from '../classes/UserDetails';
 import { Utils } from '../classes/Utils';
 import { MiddlwareService } from '../services/middlware.service';
+import { ComponentInteractionService } from '../services/ComponentInteractionService';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +15,9 @@ export class SignupComponent implements OnInit {
 
   constructor(
     public userDetails:UserDetails,
-    private middlwareService:MiddlwareService
+    private middlwareService:MiddlwareService,
+    private router:Router,
+    private componentInteractionService:ComponentInteractionService
     ) { }
   public isInValidUserName:boolean = false;
   public isInValidEmail:boolean = false;
@@ -31,6 +35,10 @@ export class SignupComponent implements OnInit {
         this.middlwareService.submitSignup(JSON.stringify(this.userDetails)).subscribe(
           result=>{
             console.log(result);
+            if(result.status==201){
+              this.componentInteractionService.setSignupComponentData(this.userDetails);
+              this.router.navigateByUrl('/otp');
+            }
           }
         );
     }

@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MiddlwareService } from './services/middlware.service';
 import { SignupComponent } from './signup/signup.component';
+import { OtpComponent } from './otp/otp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    OtpComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { SignupComponent } from './signup/signup.component';
     HttpClientModule,
     RouterModule.forRoot([
       {path:'',component:LoginComponent},
-      {path:'signup',component:SignupComponent}
+      {path:'signup',component:SignupComponent},
+      {path:'otp',component:OtpComponent}
     ])
   ],
   providers: [],

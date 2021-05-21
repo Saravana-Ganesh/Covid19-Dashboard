@@ -12,7 +12,7 @@ export class MiddlwareService {
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
   submitSignup(formData: any) {
-    return this.httpClient.post<any>('/Covid19Dashboard/signup', formData, {headers: this.headers});
+    return this.httpClient.post<any>('Covid19Dashboard/signup', formData, {headers: this.headers});
   }
   
 }
