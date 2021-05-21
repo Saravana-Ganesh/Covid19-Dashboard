@@ -3,7 +3,6 @@ package com.covid.bo;
 public class ResponseBO {
 	
 	private int status;
-	private String statusMessage;
 	private RegistrationBO registrationBO;
 		
 	public int getStatus() {
@@ -22,12 +21,5 @@ public class ResponseBO {
 		this.registrationBO = registrationBO;
 	}
 
-	public String getStatusMessage() {
-		return statusMessage;
-	}
-
-	public void setStatusMessage(String statusMessage) {
-		this.statusMessage = statusMessage;
-	}
 	
 }

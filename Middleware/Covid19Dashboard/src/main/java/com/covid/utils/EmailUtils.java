@@ -11,6 +11,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import com.covid.bo.EmailBO;
+import com.covid.bo.RegistrationBO;
 import com.covid.constants.EmailConstants;
 
 public final class EmailUtils {
@@ -50,5 +51,12 @@ public final class EmailUtils {
             e.printStackTrace();
         }
 		return true;
+	}
+	public static EmailBO generateOTPContentForRegistration(RegistrationBO registrationBO,int otp) {
+		EmailBO emailBO = new EmailBO();
+		emailBO.setMailSubject("One Time Password (OTP) for Registration in Covid Dashboard");
+		emailBO.setMailBodyContent("Dear "+registrationBO.getName()+", \nYour One Time Password (OTP) for Registration in Covid Dashboard is "+otp);
+		emailBO.setToMailList(new String[]{registrationBO.getEmail()});
+		return emailBO;
 	}
 }

@@ -11,7 +11,7 @@ public class RegistrationBO {
 	@Id
 	@Column(name = "ID",unique=true)
 	private int id = 0;
-	@Column(name = "ISActive")
+	@Column(name = "IS_Active")
 	private int isActive = 0;
 	@Column(name = "USER_NAME")
 	private String name;
@@ -21,8 +21,7 @@ public class RegistrationBO {
 	private String email;
 	@Column(name = "PHONE")
 	private String phone;
-	@Column(name = "OTP")
-	private int otp = 0;
+	
 	public String getName() {
 		return name;
 	}
@@ -47,13 +46,11 @@ public class RegistrationBO {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}	
+	public int getIsActive() {
+		return isActive;
 	}
-	public int getOtp() {
-		return otp;
-	}
-	public void setOtp(int otp) {
-		this.otp = otp;
-	}
-	
-		
+	public void setIsActive(int isActive) {
+		this.isActive = isActive;
+	}		
 }

@@ -1,14 +1,13 @@
 package com.covid.delete;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.covid.bo.RegistrationBO;
 import com.covid.utils.HibernateUtils;
 
 public class TestDAO {
-	Session session = HibernateUtils.getSessionFactory();
+	Session session = HibernateUtils.getSessionFactory().openSession();
 	private static RegistrationBO registrationBO = new RegistrationBO();
 	public static void main(String[] args) {		
 		registrationBO.setEmail("email");
