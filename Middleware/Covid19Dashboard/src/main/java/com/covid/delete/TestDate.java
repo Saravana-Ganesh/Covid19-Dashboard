@@ -11,13 +11,11 @@ public class TestDate {
 		 System.out.println(date1);
 		 String day = date1.getDayOfMonth()+":"+date1.getMonth()+":"+date1.getYear();
 		 System.out.println(day);
-		 System.out.println("Current Time:"+date1.getHour()+":"+date1.getMinute());
+		 System.out.println(date1.getHour()+":"+date1.getMinute());
 		 LocalTime time1 = LocalTime.of(23,56,00);
 	     LocalTime time2 = LocalTime.of(00,6,00);
 	     System.out.println(ChronoUnit.HOURS.between(time2, time1));
 	     System.out.println(ChronoUnit.MINUTES.between(time2, time1) % 60);
-	     System.out.println("Convert total day into minutes...");
-	     System.out.println(date1.getHour()*60+date1.getMinute());
 	}
 
 }

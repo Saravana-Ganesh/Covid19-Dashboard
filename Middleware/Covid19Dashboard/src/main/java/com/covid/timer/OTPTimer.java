@@ -25,9 +25,7 @@ public class OTPTimer extends Thread {
 	public void destroyOTP() {
 		try {
 			Thread.sleep(1000*60*5);
-			if(AuthenticationData.oAuthOTP.get(this.registrationBO.getEmail())==this.otp) {
-				AuthenticationData.oAuthOTP.remove(this.registrationBO.getEmail());
-			}			
+			AuthenticationData.oAuthOTP.remove(this.registrationBO.getEmail());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}		

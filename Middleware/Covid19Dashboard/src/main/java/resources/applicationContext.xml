@@ -6,8 +6,8 @@
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context.xsd">
      
-    <bean id="registrationService"  class="com.covid.service.RegistrationService"></bean>
-   	<bean id="registrationDAO"  class="com.covid.dao.RegistrationDAO"></bean>
+    <bean id="loginAndRegisterService"  class="com.covid.service.RegistrationAndLoginService"></bean>
+   	<bean id="registrationAndLoginDAO"  class="com.covid.dao.RegistrationAndLoginDAO"></bean>
     
        
 </beans>

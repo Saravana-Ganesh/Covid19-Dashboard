@@ -52,11 +52,5 @@ public class RegistrationBO {
 	}
 	public void setIsActive(int isActive) {
 		this.isActive = isActive;
-	}	
-	public void setId(int id) {
-		this.id =id;
-	}
-	public int getId() {
-		return id;
-	}
+	}		
 }
