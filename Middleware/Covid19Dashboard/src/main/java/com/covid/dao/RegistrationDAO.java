@@ -13,7 +13,7 @@ import com.covid.constants.QueryConstants;
 import com.covid.constants.StoredProcedureConstants;
 import com.covid.utils.HibernateUtils;
 
-public class RegistrationAndLoginDAO {	
+public class RegistrationDAO {	
 	public ResponseBO registerUser(RegistrationBO registrationBO) {
 		Session session =  HibernateUtils.getSessionFactory().openSession();
 		ResponseBO responseBO = new ResponseBO();
@@ -57,5 +57,18 @@ public class RegistrationAndLoginDAO {
 			session.close();
 		}		
 		return responseBO;
+	}
+	public boolean checkUserExist(RegistrationBO registrationBO) {
+		Session session =  HibernateUtils.getSessionFactory().openSession();
+		try {
+			Query query = session.createQuery(QueryConstants.IS_EXISTS_IN_USER_DETAIL_MASTER);
+			query.setParameter("email", registrationBO.getEmail());	
+			return query.getResultList().iterator().hasNext();
+		}catch(Exception e) {
+			return false;
+		}finally {
+			session.clear();
+			session.close();
+		}		
 	}
 }
