@@ -14,5 +14,10 @@ export class MiddlwareService {
   submitSignup(formData: any) {
     return this.httpClient.post<any>('Covid19Dashboard/signup', formData, {headers: this.headers});
   }
-  
+  verifSignupOTP(formData:any){
+    return this.httpClient.post<any>('Covid19Dashboard/signupOTP', formData, {headers: this.headers});
+  }
+  reSendSignupOTP(formData:any){
+    return this.httpClient.post<any>('Covid19Dashboard/reSendSignupOTP', formData, {headers: this.headers});
+  }
 }

@@ -25,6 +25,7 @@ import { OtpComponent } from './otp/otp.component';
     HttpClientModule,
     RouterModule.forRoot([
       {path:'',component:LoginComponent},
+      {path:'login',component:LoginComponent},
       {path:'signup',component:SignupComponent},
       {path:'otp',component:OtpComponent}
     ])
