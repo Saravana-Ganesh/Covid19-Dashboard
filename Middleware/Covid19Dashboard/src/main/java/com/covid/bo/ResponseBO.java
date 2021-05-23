@@ -4,7 +4,8 @@ public class ResponseBO {
 	
 	private int status;
 	private RegistrationBO registrationBO;
-		
+	private int tokenID;	
+	
 	public int getStatus() {
 		return status;
 	}
@@ -19,6 +20,14 @@ public class ResponseBO {
 
 	public void setRegistrationBO(RegistrationBO registrationBO) {
 		this.registrationBO = registrationBO;
+	}
+
+	public int getTokenID() {
+		return tokenID;
+	}
+
+	public void setTokenID(int tokenID) {
+		this.tokenID = tokenID;
 	}
 
 	

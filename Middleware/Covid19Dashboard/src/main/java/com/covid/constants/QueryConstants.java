@@ -11,4 +11,7 @@ public final class QueryConstants {
 	
 	public static final String IS_EXISTS_IN_USER_DETAIL_MASTER = "from RegistrationBO "
 			+ " where email=:email";
+	
+	public static final String IS_VALID_USER = "from RegistrationBO "
+			+ " where email=:email and password=:password";
 }

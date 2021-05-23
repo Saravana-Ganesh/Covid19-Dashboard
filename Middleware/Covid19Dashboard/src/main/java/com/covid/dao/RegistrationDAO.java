@@ -63,7 +63,8 @@ public class RegistrationDAO {
 		try {
 			Query query = session.createQuery(QueryConstants.IS_EXISTS_IN_USER_DETAIL_MASTER);
 			query.setParameter("email", registrationBO.getEmail());	
-			return query.getResultList().iterator().hasNext();
+			//return query.getResultList().iterator().hasNext();
+			return !query.getResultList().isEmpty();
 		}catch(Exception e) {
 			return false;
 		}finally {
