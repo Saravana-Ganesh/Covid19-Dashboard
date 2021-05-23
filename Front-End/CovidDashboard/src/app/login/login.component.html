@@ -25,9 +25,12 @@
 							#mypassword = "ngModel"
 							[(ngModel)]="userDetails.password1" required>
 						</div>
+						<div *ngIf="invalidUserNameOrPassword">
+							<p class="danger">Invalid Email or Password</p>
+						</div>
 						<div class="row align-items-center remember">
 							<input type="checkbox">Remember Me
-						</div>
+						</div>						
 						<div class="form-group">
 							<button type="submit" (click)="loginSubmit()" class="btn float-right login_btn">Login</button>
 						</div>

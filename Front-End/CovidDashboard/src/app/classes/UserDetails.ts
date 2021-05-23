@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
   })
 export class UserDetails{
     public name: String="";
-    public email:String="";
+    public email:string="";
     public phone:String="";
     public password1:String="";
     public password2:String="";

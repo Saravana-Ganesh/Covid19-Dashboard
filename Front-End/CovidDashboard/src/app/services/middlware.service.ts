@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 
 @Injectable({
@@ -10,7 +9,7 @@ export class MiddlwareService {
     private httpClient:HttpClient
   ) { }
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-
+  //Registration related services...
   submitSignup(formData: any) {
     return this.httpClient.post<any>('Covid19Dashboard/signup', formData, {headers: this.headers});
   }
@@ -19,5 +18,9 @@ export class MiddlwareService {
   }
   reSendSignupOTP(formData:any){
     return this.httpClient.post<any>('Covid19Dashboard/reSendSignupOTP', formData, {headers: this.headers});
+  }
+  //Login related services...
+  login(formData:any){
+    return this.httpClient.post<any>('Covid19Dashboard/login', formData, {headers: this.headers});
   }
 }
