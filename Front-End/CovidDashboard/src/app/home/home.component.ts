@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
         console.log(canvas);
         var imgData = canvas.toDataURL('image/png');
         var doc = new jspdf('p', 'mm', 'a4',true);
-        doc.addImage(imgData,50,0,100,100);
+        doc.addImage(imgData,50,10,100,100);
         doc.save('chart.pdf');
       }
     )
