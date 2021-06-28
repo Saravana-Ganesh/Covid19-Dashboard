@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 import { UserDetails } from '../classes/UserDetails';
 import { MiddlwareService } from '../services/middlware.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   public invalidUserNameOrPassword:boolean = false;
   constructor(
     public userDetails:UserDetails,
-    private middlewareService:MiddlwareService
+    private middlewareService:MiddlwareService,
+    private router:Router
     ) { }
   
   ngOnInit(): void {
@@ -37,10 +38,12 @@ export class LoginComponent implements OnInit {
         result=>{
             if(result.status==200){
               console.log(result);
-              localStorage.setItem(this.userDetails.email, result.tokenID);
+              localStorage.setItem('email',this.userDetails.email);
+              localStorage.setItem('tokenID', result.tokenID);
+              this.router.navigate(['home']);
             }else{
               this.invalidUserNameOrPassword = true;
-            }
+            }  
         }
       );
     }

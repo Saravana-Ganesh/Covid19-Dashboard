@@ -1,0 +1,11 @@
+<div class="myChart" style="display: block;" id="pdfTable" #pdfTable>
+    <canvas baseChart 
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      chartType='bar'>
+    </canvas>
+    <button  (click)="downloadAsPDF()">Export To PDF</button>
+  </div>
+  
