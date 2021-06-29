@@ -1,6 +1,7 @@
 package com.covid.helper;
 
 import com.covid.bo.LoginBO;
+import com.covid.bo.OAuthBO;
 
 public class OAuthHelper {
 	
@@ -12,11 +13,11 @@ public class OAuthHelper {
 		AuthenticationDataHelper.oAuthMap.put(loginBO.getUserEmail(), metaData.hashCode());		
 	}
 	
-	public static boolean isLoggedIn(String key) {
-		return AuthenticationDataHelper.oAuthMap.get(key)!=null;
+	public static boolean isLoggedIn(OAuthBO oAuthBO) {
+		return AuthenticationDataHelper.oAuthMap.get(oAuthBO.getEmail())==oAuthBO.getKey();
 	}
 	
-	public static void logOutSession(String key) {
-		AuthenticationDataHelper.oAuthMap.remove(key);
+	public static void logOutSession(OAuthBO oAuthBO) {
+		AuthenticationDataHelper.oAuthMap.remove(oAuthBO.getEmail());
 	}
 }

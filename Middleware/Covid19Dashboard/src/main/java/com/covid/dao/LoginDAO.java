@@ -1,5 +1,7 @@
 package com.covid.dao;
 
+import java.util.ArrayList;
+
 import javax.persistence.Query;
 
 import org.hibernate.Session;
@@ -14,7 +16,7 @@ public class LoginDAO {
 		try {
 			Query query = session.createQuery(QueryConstants.IS_VALID_USER);
 			query.setParameter("email",loginBO.getUserEmail());
-			query.setParameter("password", loginBO.getPassword());
+			query.setParameter("password", loginBO.getPassword());		
 			return !query.getResultList().isEmpty();
 		}catch(Exception e) {
 			e.printStackTrace();

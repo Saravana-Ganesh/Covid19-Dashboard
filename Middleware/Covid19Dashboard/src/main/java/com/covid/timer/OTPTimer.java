@@ -17,7 +17,7 @@ public class OTPTimer extends Thread {
 		this.otp = otp;
 	}
 	public void run() {
-		AuthenticationDataHelper.oAuthOTP.put(this.registrationBO.getEmail(),otp);
+		AuthenticationDataHelper.oAuthOTP.put(this.registrationBO.getEmail(),this.otp);
 		EmailBO emailBO = EmailUtils.generateOTPContentForRegistration(this.registrationBO,this.otp);
 		EmailUtils.sendEmail(emailBO);
 		destroyOTP();

@@ -18,6 +18,17 @@ public class Student implements Cloneable{
 	public int hashCode() {
 		return 0;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		Student s = (Student)obj;
+		if(s.id==this.id)
+			return true;
+		return false;
+	}
+	@Override
+	public String toString() {
+		return this.id+"----"+this.name;
+	}
 	public static void main(String[] args) {
 		Student s = new Student();
 		System.out.println(s);

@@ -27,7 +27,7 @@ public class RegistrationService {
 				return responseBO;			
 		}
 		ResponseBO responseBO = new ResponseBO();
-		responseBO.setStatus(449);
+		responseBO.setStatus(HttpStatusCodeConstants.UNAUTHORIZED);
 		return responseBO;
 	}
 	public ResponseBO verifyOTPSignup(OTPBO otpBO) {
