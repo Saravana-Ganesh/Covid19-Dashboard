@@ -14,4 +14,8 @@ public final class QueryConstants {
 	
 	public static final String IS_VALID_USER = "from RegistrationBO "
 			+ " where email=:email and password=:password";
+	
+	public static final String GET_COVID_CASE_COUNT = ""
+			+ "SELECT "+TableConstants.COVID_DATA_MASTER_MONTH_VALUES+","
+			+TableConstants.COVID_DATA_MASTER_CASE_COUNT+" FROM "+TableConstants.COVID_DATA_MASTER;
 }

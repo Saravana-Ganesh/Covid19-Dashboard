@@ -1,10 +1,14 @@
 package com.covid.bo;
 
+import java.util.List;
+
 public class ResponseBO {
 	
 	private int status;
-	private RegistrationBO registrationBO;
 	private int tokenID;	
+	private RegistrationBO registrationBO;
+	private List<Object[]> results;
+	
 	
 	public int getStatus() {
 		return status;
@@ -28,6 +32,14 @@ public class ResponseBO {
 
 	public void setTokenID(int tokenID) {
 		this.tokenID = tokenID;
+	}
+
+	public List<Object[]> getResults() {
+		return results;
+	}
+
+	public void setResults(List<Object[]> results) {
+		this.results = results;
 	}
 
 	

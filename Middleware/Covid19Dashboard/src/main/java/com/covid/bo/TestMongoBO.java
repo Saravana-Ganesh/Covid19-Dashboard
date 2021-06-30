@@ -15,7 +15,7 @@ public class TestMongoBO {
 	}
 	@Id
 	private int id=1;
-	private String name="Saravana Ganesh The Legend In Google";
+	private String name="Saravana Ganesh";
 	private String city="Mountain View, California";
 	
 	public String getName() {

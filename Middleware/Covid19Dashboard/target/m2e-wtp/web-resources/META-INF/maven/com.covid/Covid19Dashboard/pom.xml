@@ -87,6 +87,12 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.10.0.pr2</version>
 		</dependency>
+		<!-- For converting data to excel -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>3.9</version>
+		</dependency>
 		<!-- Hibernate Jar -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -106,7 +112,7 @@
 		    <artifactId>mongo-java-driver</artifactId>
 		    <version>3.10.1</version>
 		</dependency> -->
-		
+		<!-- Mogodb Driver jar -->
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>

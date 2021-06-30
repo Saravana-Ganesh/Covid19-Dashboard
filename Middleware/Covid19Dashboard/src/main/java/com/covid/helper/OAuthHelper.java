@@ -14,7 +14,11 @@ public class OAuthHelper {
 	}
 	
 	public static boolean isLoggedIn(OAuthBO oAuthBO) {
-		return AuthenticationDataHelper.oAuthMap.get(oAuthBO.getEmail())==oAuthBO.getKey();
+		try {
+			return AuthenticationDataHelper.oAuthMap.get(oAuthBO.getEmail())==oAuthBO.getKey();
+		}catch(Exception e) {
+			return false;
+		}
 	}
 	
 	public static void logOutSession(OAuthBO oAuthBO) {

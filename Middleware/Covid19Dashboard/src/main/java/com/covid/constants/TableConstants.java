@@ -11,4 +11,11 @@ public final class TableConstants {
 	public static final String USER_DETAIL_MASTER_EMAIL     	= "EMAIL";
 	public static final String USER_DETAIL_MASTER_PHONE	    	= "PHONE";
 	
+	//Table Name
+	public static final String  COVID_DATA_MASTER 				= "COVID_DATA";
+	//Corresponding columns...
+	public static final String COVID_DATA_MASTER_MONTH_VALUES  	= "MONTH_VALUES";
+	public static final String COVID_DATA_MASTER_CASE_COUNT 	= "CASE_COUNT";
+	
+	
 }
