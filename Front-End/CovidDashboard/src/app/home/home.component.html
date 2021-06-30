@@ -1,11 +1,26 @@
-<div class="myChart" style="display: block;" id="pdfTable" #pdfTable>
+<div *ngIf=isValidUser>
+  <div class="myChart" style="display: block;" id="pdfTable" #pdfTable>
+      <div class="downloadButton">
+        <button  class="btn btn-primary" (click)="downloadAsPDF()">Download As PDF</button>     
+        <button  class="btn btn-primary"  (click)="downloadAsExcel()">Download As Excel</button>
+      </div>    
+      <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           {{chartName}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <p class="dropdown-item"  (click)="selectChartType('line')">Line Chart</p>            
+            <p class="dropdown-item"  (click)="selectChartType('pie')">Pie Chart</p>
+          </div>
+       </div>
     <canvas baseChart 
       [datasets]="barChartData"
       [labels]="barChartLabels"
       [options]="barChartOptions"
       [legend]="barChartLegend"
-      chartType='bar'>
-    </canvas>
-    <button  (click)="downloadAsPDF()">Export To PDF</button>
+      chartType= 'pie'>
+    </canvas>   
   </div>
+</div>
+
   
