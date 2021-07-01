@@ -10,6 +10,7 @@
     <bean id="loginService"         class="com.covid.service.LoginService"></bean>
     <bean id="fileDownloadService"  class="com.covid.service.FileDownloadService"></bean>
     <bean id="homeService"          class="com.covid.service.HomeService"></bean>
+    <bean id="logoutService"        class="com.covid.service.LogoutService"></bean>
     
    	<bean id="registrationDAO"  	class="com.covid.dao.RegistrationDAO"></bean>
    	<bean id="loginDAO"    			class="com.covid.dao.LoginDAO"></bean>

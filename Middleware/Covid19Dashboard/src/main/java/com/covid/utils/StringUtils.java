@@ -14,7 +14,7 @@ public final class StringUtils {
 		stringBuilder.setLength(stringBuilder.length()-1);
 		return new String(stringBuilder);		
 	}
-	public static boolean isNullOrEmpty(String str) {
+	public static boolean isNotNullOrNotEmpty(String str) {
 		return str!=null && !str.equals("");		
 	}
 	public static boolean isValidEmail(String email) {
