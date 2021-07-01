@@ -34,4 +34,7 @@ export class MiddlwareService {
   home(formData:any){
     return this.httpClient.post<any>('Covid19Dashboard/home', formData, {headers: this.headers});
   }
+  logout(formData:any){
+    return this.httpClient.post<any>('Covid19Dashboard/logout', formData, {headers: this.headers});
+  }
 }

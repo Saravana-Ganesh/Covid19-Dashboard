@@ -29,23 +29,43 @@ export class HomeComponent implements OnInit {
     private middlwareService:MiddlwareService
   ) { }
   ngOnInit() {
-    let userDetails = {
-      email:localStorage.getItem('email'),
-      key:localStorage.getItem('tokenID')
-    };
-    this.middlwareService.home(JSON.stringify(userDetails)).subscribe(
-      result=>{
-        console.log(result);
-        if(result.status==401){
-          this.router.navigateByUrl('/login');
-        }else{
-          this.isValidUser = true;
-          this.drawHomePage(result);
+    if(localStorage.getItem('email')!=null && localStorage.getItem('tokenID')!=null){
+      let userDetails = {
+        email:localStorage.getItem('email'),
+        key:localStorage.getItem('tokenID')
+      };
+      this.middlwareService.home(JSON.stringify(userDetails)).subscribe(
+        result=>{
+          console.log(result);
+          if(result.status==401){
+            this.router.navigateByUrl('/login');
+          }else{
+            this.isValidUser = true;
+            this.drawHomePage(result);
+          }
         }
-      }
-    )
+      )
+    }else{
+      this.router.navigateByUrl('/login')
+    }
+    
   }
   logout(){
+    if(localStorage.getItem('email')!=null && localStorage.getItem('tokenID')!=null){
+      let userDetails = {
+        email:localStorage.getItem('email'),
+        key:localStorage.getItem('tokenID')
+      };
+      localStorage.removeItem('email');
+      localStorage.removeItem('tokenID');
+      this.middlwareService.logout(JSON.stringify(userDetails)).subscribe(
+        result=>{
+          this.router.navigateByUrl('/login');
+        }
+      )
+    }else{
+        this.router.navigateByUrl('/login');
+    }
     
   }
   drawHomePage(response:any){
