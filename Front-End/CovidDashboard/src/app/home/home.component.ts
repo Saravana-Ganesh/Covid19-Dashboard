@@ -6,6 +6,7 @@ import html2canvas from 'html2canvas';
 
 import { MiddlwareService } from '../services/middlware.service';
 import { EnumValues } from '../classes/EnumValues';
+import { ChartType } from 'chart.js';
 
 
 declare var jsPDF: any;
@@ -16,13 +17,11 @@ declare var jsPDF: any;
   styleUrls: ['./home.component.css']
 })   
 export class HomeComponent implements OnInit {
+  public isValidUser = false;
+
   public chartName="Bar Chart";
-  isValidUser = false;
-  //public barChartLabels = ['2006','2007','2008','2009','2010','2011','2012'];
   public barChartLabels:any = [];
   public barChartValues:any = [];
-  //public barChartType = 'bar';
-  public barChartType : EnumValues = EnumValues.bar;
   public barChartLegend = true;
 
   constructor(
@@ -46,14 +45,8 @@ export class HomeComponent implements OnInit {
       }
     )
   }
-  selectChartType(chartName:any){
-    if(chartName=='line'){
-      this.chartName = 'Line Chart';
-    }
-    if(chartName=='pie'){
-      this.chartName = 'Pie Chart';
-    }
-      
+  logout(){
+    
   }
   drawHomePage(response:any){
     for(let i=0;i<response.results.length;i++){
@@ -86,11 +79,24 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+  selectChartType(chartName:any){
+    this.barChartType = chartName;
+    if(chartName=='line'){
+      this.chartName = 'Line Chart';      
+    }
+    if(chartName=='pie'){
+      this.chartName = 'Pie Chart';
+    }
+      
+  }
   public barChartOptions = {
     scaleShowVerticalLines:false,  
     responsive:true
   };
-  
+  public chartType = ['bar','line','pie'];
+
+  public barChartType:ChartType = 'bar'
+
   public barChartData = [
     {
       data:this.barChartValues,//[65,59,80,81,56,55,40],

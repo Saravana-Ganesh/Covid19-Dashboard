@@ -3,6 +3,12 @@
   margin-bottom: 20%;
   margin-top: 2%;
 }
-.downloadButton {
+/* .downloadButton {
   margin: 2%;
+} */
+.customMargin {
+  margin-left: 10%;
+}
+.LogoutMargin {
+  margin-left: 33%;
 }

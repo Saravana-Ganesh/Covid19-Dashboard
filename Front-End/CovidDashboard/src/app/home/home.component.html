@@ -1,24 +1,19 @@
 <div *ngIf=isValidUser>
-  <div class="myChart" style="display: block;" id="pdfTable" #pdfTable>
+  <div class="myChart" style="display: block;" >
       <div class="downloadButton">
-        <button  class="btn btn-primary" (click)="downloadAsPDF()">Download As PDF</button>     
-        <button  class="btn btn-primary"  (click)="downloadAsExcel()">Download As Excel</button>
-      </div>    
-      <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           {{chartName}}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <p class="dropdown-item"  (click)="selectChartType('line')">Line Chart</p>            
-            <p class="dropdown-item"  (click)="selectChartType('pie')">Pie Chart</p>
-          </div>
-       </div>
-    <canvas baseChart 
+        <select  #myVal (change)='selectChartType(myVal.value)' class="custom-select" style="max-width: 120px;" name="code">       
+          <option *ngFor="let code of chartType" [value]="code">{{code}}</option>
+       </select>
+        <button  class="btn btn-primary customMargin" (click)="downloadAsPDF()">Download As PDF</button>     
+        <button  class="btn btn-primary customMargin"  (click)="downloadAsExcel()">Download As Excel</button>                      
+        <button  class="btn btn-primary LogoutMargin"  (click)="logout()">Logout</button>
+      </div>  
+    <canvas baseChart id="pdfTable" #pdfTable
       [datasets]="barChartData"
       [labels]="barChartLabels"
       [options]="barChartOptions"
       [legend]="barChartLegend"
-      chartType= 'pie'>
+      [chartType]="barChartType">
     </canvas>   
   </div>
 </div>
