@@ -27,14 +27,22 @@ public class FileDownloadService {
 		try {
 			HomeDAO homeDAO = (HomeDAO)applicationContext.getBean("homeDAO");
 			List list = homeDAO.getCaseCount(); 
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            
+            //XSSFWorkbook is top level object for creating new sheets
+            //High level representation of a SpreadsheetML workbook
+            
             XSSFWorkbook workbook = ExcelUtils.createExcel(list); // creates the workbook
+            
+            //Setting header content
             HttpHeaders header = new HttpHeaders();
             header.setContentType(new MediaType("application", "force-download"));
             header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=ProductTemplate.xlsx");
-            workbook.write(stream);
+            
+            //Write out this document to an OutputStream
+            workbook.write(byteArrayOutputStream);
            // workbook.close();
-            return new ResponseEntity<>(new ByteArrayResource(stream.toByteArray()),
+            return new ResponseEntity<>(new ByteArrayResource(byteArrayOutputStream.toByteArray()),
                     header, HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();

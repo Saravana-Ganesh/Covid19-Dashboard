@@ -5,17 +5,18 @@ import com.covid.bo.RegistrationBO;
 import com.covid.helper.AuthenticationDataHelper;
 import com.covid.utils.EmailUtils;
 
-public class OTPTimer extends Thread {
+public class OTPTimerThread extends Thread {
 	RegistrationBO registrationBO;
 	int otp;
 	EmailBO emailBO;
-	public OTPTimer() {
+	public OTPTimerThread() {
 		
 	}
-	public OTPTimer(RegistrationBO registrationBO,int otp) {
+	public OTPTimerThread(RegistrationBO registrationBO,int otp) {
 		this.registrationBO = registrationBO;
 		this.otp = otp;
 	}
+	@Override
 	public void run() {
 		AuthenticationDataHelper.oAuthOTP.put(this.registrationBO.getEmail(),this.otp);
 		EmailBO emailBO = EmailUtils.generateOTPContentForRegistration(this.registrationBO,this.otp);

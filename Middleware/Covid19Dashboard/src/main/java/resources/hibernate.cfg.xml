@@ -15,4 +15,4 @@
 			<!-- Related to the connection END -->
 			<mapping class="com.covid.bo.RegistrationBO"/>		
 		</session-factory>
-</hibernate-configuration>
+	</hibernate-configuration>

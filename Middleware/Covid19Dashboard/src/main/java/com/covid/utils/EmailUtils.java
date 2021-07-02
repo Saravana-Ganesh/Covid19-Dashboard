@@ -15,16 +15,22 @@ import com.covid.bo.RegistrationBO;
 import com.covid.constants.EmailConstants;
 
 public final class EmailUtils {
+	private static Properties prop = new Properties();
 	private EmailUtils() {
 		
 	}
-	public static boolean sendEmail(EmailBO emailBO) {
-		Properties prop = new Properties();
+	static {		
         prop.put("mail.smtp.host", "smtp.gmail.com");
         prop.put("mail.smtp.port", "587");
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true"); //TLS
-        
+	}
+	public static boolean sendEmail(EmailBO emailBO) {
+		/*
+		 * Purpose: To send email 
+		 * Time Complexity : O(1)
+		 * Auxiliary Space : O(n)
+		 */		        
         Session session = Session.getInstance(prop,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
@@ -40,6 +46,7 @@ public final class EmailUtils {
                     Message.RecipientType.TO,
                     InternetAddress.parse(StringUtils.convertStringArrayToString(emailBO.getToMailList()))
             );
+            
             message.setSubject(emailBO.getMailSubject());
             message.setText(emailBO.getMailBodyContent());
 
@@ -49,10 +56,16 @@ public final class EmailUtils {
 
         } catch (MessagingException e) {
             e.printStackTrace();
+            return false;
         }
 		return true;
 	}
 	public static EmailBO generateOTPContentForRegistration(RegistrationBO registrationBO,int otp) {
+		/*
+		 * Purpose: To Generate Email Subject & Body Content 
+		 * Time Complexity : O(1)
+		 * Auxiliary Space : O(n)
+		 */
 		EmailBO emailBO = new EmailBO();
 		emailBO.setMailSubject("One Time Password (OTP) for Registration in Covid Dashboard");
 		emailBO.setMailBodyContent("Dear "+registrationBO.getName()+", \nYour One Time Password (OTP) for Registration in Covid Dashboard is "+otp);

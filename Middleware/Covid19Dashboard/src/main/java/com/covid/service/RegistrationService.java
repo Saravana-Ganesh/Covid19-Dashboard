@@ -15,9 +15,11 @@ import com.covid.utils.StringUtils;
 public class RegistrationService {
 	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");
 	public ResponseBO register(RegistrationBO registrationBO) {
+		
 		//Validating user Input 
 		if(StringUtils.isValidUserName(registrationBO.getName()) && StringUtils.isValidEmail(registrationBO.getEmail())
-				&& StringUtils.isValidPhone(registrationBO.getPhone()) && registrationBO.getPassword1()!=0) {						
+				&& StringUtils.isValidPhone(registrationBO.getPhone()) && registrationBO.getPassword1()!=0) {
+			
 			RegistrationDAO registrationDAO = (RegistrationDAO)applicationContext.getBean("registrationDAO");
 			ResponseBO responseBO =  registrationDAO.registerUser(registrationBO);
 			//Checking DAO response status && sending otp status
@@ -26,29 +28,36 @@ public class RegistrationService {
 			else
 				return responseBO;			
 		}
+		
 		ResponseBO responseBO = new ResponseBO();
 		responseBO.setStatus(HttpStatusCodeConstants.UNAUTHORIZED);
 		return responseBO;
 	}
 	public ResponseBO verifyOTPSignup(OTPBO otpBO) {
 		Integer otp = AuthenticationDataHelper.oAuthOTP.get(otpBO.getEmail());
+		
 		if(otp!=null && otp==otpBO.getOtp()) {			
 			RegistrationDAO registrationDAO = (RegistrationDAO)applicationContext.getBean("registrationDAO");
 			return registrationDAO.verifyOTPSignup(otpBO);			
 		}
+		
 		ResponseBO responseBO = new ResponseBO();
 		responseBO.setStatus(HttpStatusCodeConstants.UNAUTHORIZED);				
 		return responseBO;
 	}	
 	public ResponseBO reSendSignupOTP(RegistrationBO registrationBO) {
 		ResponseBO responseBO = new ResponseBO();
+		
 		if(StringUtils.isValidUserName(registrationBO.getName()) && StringUtils.isValidEmail(registrationBO.getEmail())
 				&& StringUtils.isValidPhone(registrationBO.getPhone()) && registrationBO.getPassword1()!=0) {
+		
 			RegistrationDAO registrationDAO = (RegistrationDAO)applicationContext.getBean("registrationDAO");					
+			
 			if(registrationDAO.checkUserExist(registrationBO) && OTPUtils.sendOTP(registrationBO)){
 				responseBO.setStatus(HttpStatusCodeConstants.CREATED);
 				return responseBO;
 			}
+			
 			responseBO.setStatus(HttpStatusCodeConstants.UNAUTHORIZED);
 			return responseBO;
 		}
