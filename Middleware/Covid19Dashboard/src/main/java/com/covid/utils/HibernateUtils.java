@@ -18,4 +18,8 @@ public class HibernateUtils {
     public static synchronized SessionFactory getSessionFactory() {        
         return factory;
     }
+    
+    public static void closeSessionFactory() {
+    	factory.close();
+    }
 }
