@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
-
 import { MiddlwareService } from '../services/middlware.service';
-import { EnumValues } from '../classes/EnumValues';
+import { Utils } from '../classes/Utils';
+
 import { ChartType } from 'chart.js';
-
-
-declare var jsPDF: any;
 
 @Component({
   selector: 'app-home',
@@ -23,6 +18,21 @@ export class HomeComponent implements OnInit {
   public barChartLabels:any = [];
   public barChartValues:any = [];
   public barChartLegend = true;
+  
+  public barChartOptions = {
+    scaleShowVerticalLines:false,  
+    responsive:true
+  };
+  public chartType = ['bar','line','pie'];
+
+  public barChartType:ChartType = 'bar'
+
+  public barChartData = [
+    {
+      data:this.barChartValues,
+      label:'Series A'
+    }
+  ]
 
   constructor(
     private router:Router,
@@ -77,25 +87,12 @@ export class HomeComponent implements OnInit {
     }
   }
   downloadAsPDF(){
-    var element = document.getElementById('pdfTable') as HTMLCanvasElement;
-    html2canvas(element).then(
-      (canvas)=>{
-        console.log(canvas);
-        var imgData = canvas.toDataURL('image/png');
-        var doc = new jspdf('p', 'mm', 'a4',true);
-        doc.addImage(imgData,50,10,100,100);
-        doc.save('chart.pdf');
-      }
-    )
+    Utils.downloadAsPdf('pdfTable')
   }
   downloadAsExcel(){
     this.middlwareService.downloadAsExcel().subscribe(
-      (response)=>{      
-        let file = new Blob([response], { type: 'application/vnd.ms-excel' });
-        var fileURL = URL.createObjectURL(file);
-        console.log(fileURL);
-        window.open(fileURL, "_blank");
-
+      (response)=>{              
+        Utils.downloadAsExcel(response);
       }
     );
   }
@@ -109,23 +106,5 @@ export class HomeComponent implements OnInit {
     }
       
   }
-  public barChartOptions = {
-    scaleShowVerticalLines:false,  
-    responsive:true
-  };
-  public chartType = ['bar','line','pie'];
-
-  public barChartType:ChartType = 'bar'
-
-  public barChartData = [
-    {
-      data:this.barChartValues,//[65,59,80,81,56,55,40],
-      label:'Series A'
-    }/* ,
-    {
-      data:[100,200,300,400,500],
-      label:'Series B'
-    } */
-  ]
- 
+   
 }
