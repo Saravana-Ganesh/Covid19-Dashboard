@@ -7,18 +7,15 @@ public class HibernateUtils {
 
     private static SessionFactory factory;
     static {
-    	getSessionFactory();
+    	factory = new Configuration().configure("resources//hibernate.cfg.xml").
+                buildSessionFactory(); 
     }
     
-    //to disallow creating objects by other classes.
+    //To prevent creating instance at outside of the class
     private HibernateUtils() {
     }
-    //SessionFactory object as singleton
-    public static synchronized SessionFactory getSessionFactory() {
-        if (factory == null) {
-            factory = new Configuration().configure("resources//hibernate.cfg.xml").
-                    buildSessionFactory();            
-        }
+    //Returning common SessionFactory object
+    public static synchronized SessionFactory getSessionFactory() {        
         return factory;
     }
 }
