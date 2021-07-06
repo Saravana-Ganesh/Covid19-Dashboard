@@ -5,6 +5,7 @@ import { MiddlwareService } from '../services/middlware.service';
 import { Utils } from '../classes/Utils';
 
 import { ChartType } from 'chart.js';
+import { Color } from 'ng2-charts';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,18 @@ import { ChartType } from 'chart.js';
   styleUrls: ['./home.component.css']
 })   
 export class HomeComponent implements OnInit {
-  public isValidUser = false;
+  public isDrawChart = false;
+  public isShowProfile = false;
 
   public chartName="Bar Chart";
   public barChartLabels:any = [];
   public barChartValues:any = [];
   public barChartLegend = true;
+
+  // public chartColors: any[] = [
+  //   { 
+  //     backgroundColor:["purple"] 
+  //   }];
   
   public barChartOptions = {
     scaleShowVerticalLines:false,  
@@ -50,7 +57,7 @@ export class HomeComponent implements OnInit {
           if(result.status==401){
             this.router.navigateByUrl('/login');
           }else{
-            this.isValidUser = true;
+            this.isDrawChart = true;
             this.drawHomePage(result);
           }
         }
@@ -106,5 +113,9 @@ export class HomeComponent implements OnInit {
     }
       
   }
-   
+
+  viewProfile(){
+    this.router.navigateByUrl('/profile');
+  }   
+ 
 }

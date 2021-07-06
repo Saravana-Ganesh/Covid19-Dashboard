@@ -12,6 +12,7 @@ import { MiddlwareService } from './services/middlware.service';
 import { SignupComponent } from './signup/signup.component';
 import { OtpComponent } from './otp/otp.component';
 import { HomeComponent } from './home/home.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     SignupComponent,
     OtpComponent,
-    HomeComponent
+    HomeComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { HomeComponent } from './home/home.component';
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'otp', component: OtpComponent }
+      { path: 'otp', component: OtpComponent },
+      { path: 'profile', component: UserProfileComponent }
     ])
   ],
   providers: [],

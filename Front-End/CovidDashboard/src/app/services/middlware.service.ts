@@ -43,6 +43,9 @@ export class MiddlwareService {
   home(formData:any){
     return this.httpClient.post<any>(this.url+'/home', formData, {headers: this.headers});
   }
+  userProfile(formData:any){
+    return this.httpClient.post<any>(this.url+'/profile', formData, {headers: this.headers});
+  }
   logout(formData:any){
     return this.httpClient.post<any>(this.url+'/logout', formData, {headers: this.headers});
   }
