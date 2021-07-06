@@ -30,12 +30,13 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     HttpClientModule,
     ChartsModule,
     RouterModule.forRoot([
-      { path: '', component: LoginComponent },
+    
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
       { path: 'home', component: HomeComponent },
       { path: 'otp', component: OtpComponent },
-      { path: 'profile', component: UserProfileComponent }
+      { path: 'profile', component: UserProfileComponent },
+      { path: '', component: LoginComponent }
     ])
   ],
   providers: [],

@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     scaleShowVerticalLines:false,  
     responsive:true
   };
-  public chartType = ['bar','line','pie'];
+  public chartType = ['Bar Chart','Line Chart','Pie Chart'];
 
   public barChartType:ChartType = 'bar'
 
@@ -103,15 +103,9 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  selectChartType(chartName:any){
-    this.barChartType = chartName;
-    if(chartName=='line'){
-      this.chartName = 'Line Chart';      
-    }
-    if(chartName=='pie'){
-      this.chartName = 'Pie Chart';
-    }
-      
+  selectChartType(chartName:any){    
+    this.barChartType = chartName.substring(0,chartName.indexOf(" ")).toLowerCase();
+    this.chartName = chartName;       
   }
 
   viewProfile(){

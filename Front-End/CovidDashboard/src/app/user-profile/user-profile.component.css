@@ -60,3 +60,11 @@
 .profile-details ul li a i {
   margin-right: 8px;
 }
+.container .row .marginAdjustment {
+  margin-left: 34% !important;
+  margin-top: 12% !important;
+}
+.container .row {
+  background: #f3e1c9 !important;
+  height: 100%;
+}
