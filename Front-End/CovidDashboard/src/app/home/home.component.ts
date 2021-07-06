@@ -87,11 +87,13 @@ export class HomeComponent implements OnInit {
   }
   drawHomePage(response:any){
     for(let i=0;i<response.results.length;i++){
-      for(let j=0;j<response.results[i].length;j++){            
+                 
             this.barChartLabels.push(response.results[i][0]);
             this.barChartValues.push(response.results[i][1]);
-      }
+           
+      
     }
+    console.log(this.barChartLabels);
   }
   downloadAsPDF(){
     Utils.downloadAsPdf('pdfTable')
@@ -103,9 +105,11 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  selectChartType(chartName:any){    
+  selectChartType(chartName:any){
+    
     this.barChartType = chartName.substring(0,chartName.indexOf(" ")).toLowerCase();
-    this.chartName = chartName;       
+    this.chartName = chartName;
+      
   }
 
   viewProfile(){
