@@ -7,6 +7,7 @@ public class ResponseBO {
 	private int status;
 	private int tokenID;	
 	private RegistrationBO registrationBO;
+	private List<RegistrationBO> RegistrationBOList;
 	private List<Object[]> results;
 	
 	
@@ -40,6 +41,14 @@ public class ResponseBO {
 
 	public void setResults(List<Object[]> results) {
 		this.results = results;
+	}
+
+	public List<RegistrationBO> getRegistrationBOList() {
+		return RegistrationBOList;
+	}
+
+	public void setRegistrationBOList(List<RegistrationBO> registrationBOList) {
+		RegistrationBOList = registrationBOList;
 	}
 
 	

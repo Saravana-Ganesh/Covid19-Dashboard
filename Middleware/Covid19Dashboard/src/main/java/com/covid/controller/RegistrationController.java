@@ -16,6 +16,7 @@ import com.covid.service.RegistrationService;
 public class RegistrationController {
 	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");
 	RegistrationService registrationService= (RegistrationService)applicationContext.getBean("registrationService");
+	
 	@PostMapping(value="/signup",produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseBO signup(@RequestBody RegistrationBO registrationBO) {
 		return registrationService.register(registrationBO);		

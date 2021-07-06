@@ -7,6 +7,7 @@ import com.covid.helper.OAuthHelper;
 import com.covid.utils.StringUtils;
 
 public class LogoutService {
+	
 	public ResponseBO logOutSession(OAuthBO oAuthBO) {
 		ResponseBO responseBO = new ResponseBO();
 		if(StringUtils.isValidEmail(oAuthBO.getEmail()) && oAuthBO.getKey()!=0){

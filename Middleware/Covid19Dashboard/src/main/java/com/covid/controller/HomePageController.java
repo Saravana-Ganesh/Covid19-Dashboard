@@ -14,8 +14,10 @@ import com.covid.service.RegistrationService;
 
 @RestController
 public class HomePageController {
-	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");
+	
+	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");	
 	HomeService homeService = (HomeService)applicationContext.getBean("homeService");
+	
 	@PostMapping(value="/home")
 	public ResponseBO getHomeData(@RequestBody OAuthBO oAuthBO){
 		return homeService.getHomeData(oAuthBO);

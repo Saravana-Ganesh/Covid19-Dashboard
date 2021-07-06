@@ -14,6 +14,7 @@ import com.covid.constants.StoredProcedureConstants;
 import com.covid.utils.HibernateUtils;
 
 public class RegistrationDAO {	
+	
 	public ResponseBO registerUser(RegistrationBO registrationBO) {
 		Session session =  HibernateUtils.getSessionFactory().openSession();
 		ResponseBO responseBO = new ResponseBO();
@@ -35,6 +36,7 @@ public class RegistrationDAO {
 			session.close();
 		}
 	}
+	
 	public ResponseBO verifyOTPSignup(OTPBO otpBO) {
 		Session session =  HibernateUtils.getSessionFactory().openSession();
 		ResponseBO responseBO = new ResponseBO();
@@ -58,12 +60,12 @@ public class RegistrationDAO {
 		}		
 		return responseBO;
 	}
+	
 	public boolean checkUserExist(RegistrationBO registrationBO) {
 		Session session =  HibernateUtils.getSessionFactory().openSession();
 		try {
 			Query query = session.createQuery(QueryConstants.IS_EXISTS_IN_USER_DETAIL_MASTER);
 			query.setParameter("email", registrationBO.getEmail());	
-			//return query.getResultList().iterator().hasNext();
 			return !query.getResultList().isEmpty();
 		}catch(Exception e) {
 			return false;

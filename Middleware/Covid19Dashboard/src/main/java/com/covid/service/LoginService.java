@@ -10,7 +10,9 @@ import com.covid.dao.LoginDAO;
 import com.covid.helper.OAuthHelper;
 
 public class LoginService {
+	
 	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");
+	
 	public ResponseBO validateUser(LoginBO loginBO) {
 		ResponseBO responseBO = new ResponseBO();
 		LoginDAO loginDAO = (LoginDAO)applicationContext.getBean("loginDAO");

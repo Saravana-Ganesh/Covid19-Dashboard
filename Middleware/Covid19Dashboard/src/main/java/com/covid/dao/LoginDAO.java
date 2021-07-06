@@ -1,7 +1,5 @@
 package com.covid.dao;
 
-import java.util.ArrayList;
-
 import javax.persistence.Query;
 
 import org.hibernate.Session;
@@ -11,6 +9,7 @@ import com.covid.constants.QueryConstants;
 import com.covid.utils.HibernateUtils;
 
 public class LoginDAO {
+	
 	public boolean validateUser(LoginBO loginBO) {
 		Session session =  HibernateUtils.getSessionFactory().openSession();
 		try {

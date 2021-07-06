@@ -9,18 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.covid.bo.OAuthBO;
 import com.covid.bo.ResponseBO;
-import com.covid.service.LogoutService;
+import com.covid.service.UserInfoService;
 
 @RestController
-public class LogoutController {
-	
+public class UserInfoController {
 	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");
-	LogoutService logoutService = (LogoutService)applicationContext.getBean("logoutService");
+	UserInfoService userInfoService = (UserInfoService)applicationContext.getBean("userInfoService");
 	
-	@PostMapping(value="/logout",produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseBO logOutSession(@RequestBody OAuthBO oAuthBO) {
-		return logoutService.logOutSession(oAuthBO);		
-	}	
-
+	@PostMapping(value="/profile",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseBO getUserInfo(@RequestBody OAuthBO oAuthBO) {
+		return userInfoService.getUserInfo(oAuthBO);		
+	}
 }
-         

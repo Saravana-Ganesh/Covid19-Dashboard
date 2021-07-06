@@ -9,13 +9,15 @@ public class OTPTimerThread extends Thread {
 	RegistrationBO registrationBO;
 	int otp;
 	EmailBO emailBO;
+	
 	public OTPTimerThread() {
 		
-	}
+	}	
 	public OTPTimerThread(RegistrationBO registrationBO,int otp) {
 		this.registrationBO = registrationBO;
 		this.otp = otp;
 	}
+	
 	@Override
 	public void run() {
 		AuthenticationDataHelper.oAuthOTP.put(this.registrationBO.getEmail(),this.otp);
@@ -23,8 +25,11 @@ public class OTPTimerThread extends Thread {
 		EmailUtils.sendEmail(emailBO);
 		destroyOTP();
 	}
+	
 	public void destroyOTP() {
 		try {
+			/*Thread will sleep for 5 minutes. After 5 minute, thread will remove
+			OTP value from Map object.*/
 			Thread.sleep(1000*60*5);
 			if(AuthenticationDataHelper.oAuthOTP.get(this.registrationBO.getEmail())==this.otp) {
 				AuthenticationDataHelper.oAuthOTP.remove(this.registrationBO.getEmail());

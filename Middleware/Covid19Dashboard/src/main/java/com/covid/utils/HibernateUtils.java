@@ -15,7 +15,7 @@ public class HibernateUtils {
     private HibernateUtils() {
     }
     //Returning common SessionFactory object
-    public static synchronized SessionFactory getSessionFactory() {        
+    public static SessionFactory getSessionFactory() {        
         return factory;
     }
     

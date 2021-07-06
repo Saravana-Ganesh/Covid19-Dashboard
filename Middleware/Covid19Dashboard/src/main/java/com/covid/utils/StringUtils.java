@@ -9,9 +9,10 @@ public final class StringUtils {
 	}
 	public static String convertStringArrayToString(String...arr) {
 		/*
-		 * Purpose: To convert String array to normal String with comma seperated 
+		 * Purpose: To convert String array to normal String with comma separated 
 		 * Time Complexity : O(n)
 		 * Auxiliary Space : O(n)
+		 * Where n is the size of input String array.
 		 */
 		StringBuilder stringBuilder  = new StringBuilder();
 		for(String str:arr) {

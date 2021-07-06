@@ -11,6 +11,7 @@ public class HibernateApplicationContextListener implements ServletContextListen
 	public void contextInitialized(ServletContextEvent sce) {
 		/*
 		 * Purpose: To load Hibernate session factory object in JVM memory
+		 *          when server starts....
 		 */
 		try {
 			Class.forName("com.covid.utils.HibernateUtils");

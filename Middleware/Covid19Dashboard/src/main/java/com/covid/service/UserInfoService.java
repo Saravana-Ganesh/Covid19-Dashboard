@@ -1,30 +1,32 @@
 package com.covid.service;
 
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.covid.bo.OAuthBO;
 import com.covid.bo.ResponseBO;
 import com.covid.constants.HttpStatusCodeConstants;
-import com.covid.dao.HomeDAO;
+import com.covid.dao.LoginDAO;
+import com.covid.dao.UserInfoDAO;
 import com.covid.helper.OAuthHelper;
 
-public class HomeService {
-	
+public class UserInfoService {
 	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");
 	
-	public ResponseBO getHomeData(OAuthBO oAuthBO){
+	public ResponseBO getUserInfo(OAuthBO oAuthBO) {
+		
 		ResponseBO responseBO = new ResponseBO();
+		UserInfoDAO userInfoDAO = (UserInfoDAO)applicationContext.getBean("userInfoDAO");
+		
 		if(OAuthHelper.isLoggedIn(oAuthBO)) {
-			HomeDAO homeDAO = (HomeDAO)applicationContext.getBean("homeDAO");
-			List<Object[]> list = homeDAO.getCaseCount();
-			responseBO.setResults(list);
+			responseBO = userInfoDAO.getUserInfo(oAuthBO);
 			responseBO.setStatus(HttpStatusCodeConstants.OK);
+			
 			return responseBO;
 		}
+		
 		responseBO.setStatus(HttpStatusCodeConstants.UNAUTHORIZED);
 		return responseBO;
 	}
+
 }

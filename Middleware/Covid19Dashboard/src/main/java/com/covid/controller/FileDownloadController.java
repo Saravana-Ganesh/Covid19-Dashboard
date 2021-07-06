@@ -13,7 +13,9 @@ import com.covid.service.FileDownloadService;
 
 @RestController
 public class FileDownloadController {
-	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");	
+	
+	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");
+	
 	@GetMapping(value="/downloadAsExcel")
 	public HttpEntity<ByteArrayResource> downloadExcel() throws IOException {
 		FileDownloadService fileDownloadService = (FileDownloadService)applicationContext.getBean("fileDownloadService");

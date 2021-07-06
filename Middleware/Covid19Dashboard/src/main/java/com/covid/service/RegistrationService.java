@@ -13,7 +13,9 @@ import com.covid.utils.OTPUtils;
 import com.covid.utils.StringUtils;
 
 public class RegistrationService {
+	
 	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");
+	
 	public ResponseBO register(RegistrationBO registrationBO) {
 		
 		//Validating user Input 
@@ -33,6 +35,7 @@ public class RegistrationService {
 		responseBO.setStatus(HttpStatusCodeConstants.UNAUTHORIZED);
 		return responseBO;
 	}
+	
 	public ResponseBO verifyOTPSignup(OTPBO otpBO) {
 		Integer otp = AuthenticationDataHelper.oAuthOTP.get(otpBO.getEmail());
 		
@@ -44,7 +47,8 @@ public class RegistrationService {
 		ResponseBO responseBO = new ResponseBO();
 		responseBO.setStatus(HttpStatusCodeConstants.UNAUTHORIZED);				
 		return responseBO;
-	}	
+	}
+	
 	public ResponseBO reSendSignupOTP(RegistrationBO registrationBO) {
 		ResponseBO responseBO = new ResponseBO();
 		

@@ -1,7 +1,6 @@
 package com.covid.service;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,16 +13,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import com.covid.utils.ExcelUtils;
 import com.covid.dao.HomeDAO;
+import com.covid.utils.ExcelUtils;
 
 public class FileDownloadService {
 	
 	public FileDownloadService() {
 		
 	}
-	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");	
-	public HttpEntity<ByteArrayResource> downloadExcel() throws IOException {
+	static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("resources//applicationContext.xml");
+	
+	public HttpEntity<ByteArrayResource> downloadExcel(){
 		try {
 			HomeDAO homeDAO = (HomeDAO)applicationContext.getBean("homeDAO");
 			List list = homeDAO.getCaseCount(); 
