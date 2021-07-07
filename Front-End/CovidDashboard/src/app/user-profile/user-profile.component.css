@@ -3,14 +3,14 @@
   margin: 20px 0px;
   background-color: #ffffff;
   padding-top: 20px;
-  box-shadow: 8px 8px 0px 0px #adadad;
+  /* box-shadow: 8px 8px 0px 0px #adadad; */
 }
 .User-img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   margin: 0 auto;
 }
 .User-img img {
@@ -50,7 +50,7 @@
 }
 .profile-details ul li:last-child a {
   border-bottom: none;
-  border-bottom-right-radius: 20px;
+  /* border-bottom-right-radius: 20px; */
 }
 .profile-details ul li a:hover {
   color: #2196f3;
@@ -61,10 +61,15 @@
   margin-right: 8px;
 }
 .container .row .marginAdjustment {
-  margin-left: 34% !important;
-  margin-top: 12% !important;
+  /* margin-left: 34% !important;
+  margin-top: 12% !important; */
+}
+
+.container .row .marginAdjustment .div-box {
+  width: 333%;
 }
 .container .row {
-  background: #f3e1c9 !important;
+  /* background: #f3e1c9 !important; */
   height: 100%;
+  width: -webkit-fill-available;
 }

@@ -12,3 +12,13 @@
 .LogoutMargin {
   margin-left: 10%;
 }
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+#pdfTable_wrapper {
+  margin-top: 3%;
+}
+.myChart .customTable {
+  margin-top: 3%;
+}

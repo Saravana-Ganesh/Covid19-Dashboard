@@ -6,21 +6,27 @@ import { Utils } from '../classes/Utils';
 
 import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
-
+import { ComponentInteractionService } from '../services/ComponentInteractionService';
+declare let $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  template:'<app-home [parentData]="isDrawChart"></app-home>'
 })   
 export class HomeComponent implements OnInit {
   public isDrawChart = false;
-  public isShowProfile = false;
+  public isShowProfile = true;;
+
+  public tableData:any;
+  public isShowtable = false;
+  dtOptions: DataTables.Settings = {};
 
   public chartName="Bar Chart";
   public barChartLabels:any = [];
   public barChartValues:any = [];
   public barChartLegend = true;
-
+  
   // public chartColors: any[] = [
   //   { 
   //     backgroundColor:["purple"] 
@@ -30,7 +36,7 @@ export class HomeComponent implements OnInit {
     scaleShowVerticalLines:false,  
     responsive:true
   };
-  public chartType = ['Bar Chart','Line Chart','Pie Chart'];
+  public chartType = ['Bar Chart','Line Chart','Pie Chart','Table'];
 
   public barChartType:ChartType = 'bar'
 
@@ -43,11 +49,20 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private middlwareService:MiddlwareService
+    private middlwareService:MiddlwareService,
+    public componentInteractionService:ComponentInteractionService
   ) { }
   ngOnInit() {
+    /* let table = $(document).ready(function() {
+      $('#example').DataTable();
+     } ); */
+     this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: true
+    };
     if(localStorage.getItem('email')!=null && localStorage.getItem('tokenID')!=null){
-      let userDetails = {
+        let userDetails = {
         email:localStorage.getItem('email'),
         key:localStorage.getItem('tokenID')
       };
@@ -58,6 +73,8 @@ export class HomeComponent implements OnInit {
             this.router.navigateByUrl('/login');
           }else{
             this.isDrawChart = true;
+            this.componentInteractionService.setisShowProfile(false);
+            this.componentInteractionService.setIsDrawChart(true); 
             this.drawHomePage(result);
           }
         }
@@ -79,13 +96,15 @@ export class HomeComponent implements OnInit {
         result=>{
           this.router.navigateByUrl('/login');
         }
-      )
+      ) 
     }else{
         this.router.navigateByUrl('/login');
     }
     
   }
   drawHomePage(response:any){
+    this.tableData = response.results;
+    
     for(let i=0;i<response.results.length;i++){
                  
             this.barChartLabels.push(response.results[i][0]);
@@ -106,14 +125,24 @@ export class HomeComponent implements OnInit {
     );
   }
   selectChartType(chartName:any){
+    if(chartName=='Table'){
+      this.isShowtable = true;
+      this.isDrawChart = false;      
+    }else{
+      this.isDrawChart = true;
+      this.isShowtable = false;
+      this.barChartType = chartName.substring(0,chartName.indexOf(" ")).toLowerCase();
+    }
     
-    this.barChartType = chartName.substring(0,chartName.indexOf(" ")).toLowerCase();
     this.chartName = chartName;
       
   }
 
   viewProfile(){
-    this.router.navigateByUrl('/profile');
+    this.isShowProfile = true;
+    this.isDrawChart = false;
+    this.componentInteractionService.setisShowProfile(this.isShowProfile);
+    this.componentInteractionService.setIsDrawChart(this.isDrawChart);
   }   
  
 }

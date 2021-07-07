@@ -13,6 +13,7 @@ import { SignupComponent } from './signup/signup.component';
 import { OtpComponent } from './otp/otp.component';
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     FormsModule,
     HttpClientModule,
     ChartsModule,
+    DataTablesModule,
     RouterModule.forRoot([
     
       { path: 'login', component: LoginComponent },
