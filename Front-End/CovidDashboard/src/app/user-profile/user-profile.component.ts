@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.parentData);
     if(localStorage.getItem('email')!=null && localStorage.getItem('tokenID')!=null){
-     if(this.userDetails.name == '' && this.userDetails.email =='' && this.userDetails.phone ==''){
+     if(this.userDetails.name == '' || this.userDetails.email =='' || this.userDetails.phone ==''){
 
       let userDetails = {
         email:localStorage.getItem('email'),

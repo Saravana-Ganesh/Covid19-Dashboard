@@ -7,6 +7,7 @@ import { Utils } from '../classes/Utils';
 import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
 import { ComponentInteractionService } from '../services/ComponentInteractionService';
+import { UserDetails } from '../classes/UserDetails';
 declare let $: any;
 @Component({
   selector: 'app-home',
@@ -43,12 +44,13 @@ export class HomeComponent implements OnInit {
   public barChartData = [
     {
       data:this.barChartValues,
-      label:'Series A'
+      label:'Case Count'
     }
   ]
 
   constructor(
     private router:Router,
+    public userDetails:UserDetails,
     private middlwareService:MiddlwareService,
     public componentInteractionService:ComponentInteractionService
   ) { }
@@ -56,12 +58,13 @@ export class HomeComponent implements OnInit {
     /* let table = $(document).ready(function() {
       $('#example').DataTable();
      } ); */
-     this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10,
-      processing: true
-    };
+     
     if(localStorage.getItem('email')!=null && localStorage.getItem('tokenID')!=null){
+        this.dtOptions = {
+          pagingType: 'full_numbers',
+          pageLength: 10,
+          processing: true
+        };
         let userDetails = {
         email:localStorage.getItem('email'),
         key:localStorage.getItem('tokenID')
@@ -90,6 +93,7 @@ export class HomeComponent implements OnInit {
         email:localStorage.getItem('email'),
         key:localStorage.getItem('tokenID')
       };
+      this.userDetails.name = this.userDetails.email = this.userDetails.phone = '';
       localStorage.removeItem('email');
       localStorage.removeItem('tokenID');
       this.middlwareService.logout(JSON.stringify(userDetails)).subscribe(
