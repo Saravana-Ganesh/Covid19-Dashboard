@@ -19,9 +19,7 @@ public class UserInfoService {
 		UserInfoDAO userInfoDAO = (UserInfoDAO)applicationContext.getBean("userInfoDAO");
 		
 		if(OAuthHelper.isLoggedIn(oAuthBO)) {
-			responseBO = userInfoDAO.getUserInfo(oAuthBO);
-			responseBO.setStatus(HttpStatusCodeConstants.OK);
-			
+			responseBO = userInfoDAO.getUserInfo(oAuthBO);						
 			return responseBO;
 		}
 		

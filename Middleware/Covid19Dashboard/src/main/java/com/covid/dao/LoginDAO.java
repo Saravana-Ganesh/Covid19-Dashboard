@@ -16,8 +16,9 @@ public class LoginDAO {
 			Query query = session.createQuery(QueryConstants.IS_VALID_USER);
 			query.setParameter("email",loginBO.getUserEmail());
 			query.setParameter("password", loginBO.getPassword());		
+			query.setParameter("isActive", 1);
 			return !query.getResultList().isEmpty();
-		}catch(Exception e) {
+		}catch(Exception e) { 
 			e.printStackTrace();
 			return false;
 		}finally {

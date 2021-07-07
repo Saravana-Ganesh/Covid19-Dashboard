@@ -16,6 +16,7 @@ public final class TableConstants {
 	//Corresponding columns...
 	public static final String COVID_DATA_MASTER_MONTH_VALUES  	= "MONTH_VALUES";
 	public static final String COVID_DATA_MASTER_CASE_COUNT 	= "CASE_COUNT";
+	public static final String COVID_DATA_MASTER_CITY           = "CITY";
 	
 	
 }

@@ -16,9 +16,11 @@ public final class QueryConstants {
 			+ " where email=:email";
 	
 	public static final String IS_VALID_USER = "from RegistrationBO "
-			+ " where email=:email and password=:password";
+			+ " where email=:email and password=:password and isActive=:isActive";
 	
 	public static final String GET_COVID_CASE_COUNT = ""
 			+ "SELECT "+TableConstants.COVID_DATA_MASTER_MONTH_VALUES+","
-			+TableConstants.COVID_DATA_MASTER_CASE_COUNT+" FROM "+TableConstants.COVID_DATA_MASTER;
+			+TableConstants.COVID_DATA_MASTER_CASE_COUNT+
+			","+TableConstants.COVID_DATA_MASTER_CITY+
+			" FROM "+TableConstants.COVID_DATA_MASTER;
 }
