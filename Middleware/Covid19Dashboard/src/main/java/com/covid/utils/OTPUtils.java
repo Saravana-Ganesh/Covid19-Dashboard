@@ -21,7 +21,10 @@ public final class OTPUtils {
 	     for (int i = 0; i < 6; i++){	            
 	    	 otp[i] = numbers.charAt(rndm_method.nextInt(numbers.length()));
 	     }
-	     return Integer.parseInt(new String(otp).toString());
+	     if(otp[0]=='0') {
+	    	 otp[0] = '7';
+	     }
+	     return Integer.parseInt(new String(otp));
 	}
 	public static boolean sendOTP(RegistrationBO registrationBO) {
 		/*

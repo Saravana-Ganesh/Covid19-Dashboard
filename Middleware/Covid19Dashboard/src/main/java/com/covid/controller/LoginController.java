@@ -21,4 +21,4 @@ public class LoginController {
 	public ResponseBO login(@RequestBody LoginBO loginBO) {
 		return loginService.validateUser(loginBO);		
 	}	
-}
+}  
