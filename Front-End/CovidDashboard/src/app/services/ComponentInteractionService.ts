@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ComponentInteractionService{
     private signupComonentData:any;
     private isShowProfile!: boolean;
-    private isShowChart!: boolean;
+    private isShowHome!: boolean;
 
     public setSignupComponentData(data: any):void{
         this.signupComonentData = data;
@@ -22,11 +22,11 @@ export class ComponentInteractionService{
         return this.isShowProfile;
     }
 
-    public setIsDrawChart(data:boolean):void{
-        this.isShowChart = data;
+    public setIsShowHome(data:boolean):void{
+        this.isShowHome = data;
     }
-    public getIsDrawChart():boolean{
-        return this.isShowChart;
+    public getIsShowHome():boolean{
+        return this.isShowHome;
     }
 }
 

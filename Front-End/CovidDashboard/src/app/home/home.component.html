@@ -1,5 +1,5 @@
 
-<div>
+<div  *ngIf=componentInteractionService.getIsShowHome()>
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog"> 
       <div class="modal-content">   
@@ -7,7 +7,7 @@
       </div>      
     </div>
   </div>  
-  <div *ngIf=componentInteractionService.getIsDrawChart() class="myChart" style="display: block;" >
+  <div class="myChart" style="display: block;" >
       <div class="downloadButton">
         <select  #myVal (change)='selectChartType(myVal.value)' class="custom-select" style="max-width: 120px;" name="code">       
           <option *ngFor="let code of chartType" [value]="code">{{code}}</option>
@@ -44,6 +44,6 @@
       </tbody>
     </table>
     
-  </div> 
-    </div>
+     </div> 
+  </div>
 </div>

@@ -8,12 +8,11 @@ import { ChartType } from 'chart.js';
 import { Color } from 'ng2-charts';
 import { ComponentInteractionService } from '../services/ComponentInteractionService';
 import { UserDetails } from '../classes/UserDetails';
-declare let $: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  template:'<app-home [parentData]="isDrawChart"></app-home>'
 })   
 export class HomeComponent implements OnInit {
   public isDrawChart = false;
@@ -28,10 +27,6 @@ export class HomeComponent implements OnInit {
   public barChartValues:any = [];
   public barChartLegend = true;
   
-  // public chartColors: any[] = [
-  //   { 
-  //     backgroundColor:["purple"] 
-  //   }];
   
   public barChartOptions = {
     scaleShowVerticalLines:false,  
@@ -54,34 +49,34 @@ export class HomeComponent implements OnInit {
     private middlwareService:MiddlwareService,
     public componentInteractionService:ComponentInteractionService
   ) { }
+  
   ngOnInit() {
-    /* let table = $(document).ready(function() {
-      $('#example').DataTable();
-     } ); */
-     
+         
     if(localStorage.getItem('email')!=null && localStorage.getItem('tokenID')!=null){
+
         this.dtOptions = {
           pagingType: 'full_numbers',
           pageLength: 10,
           processing: true
         };
+
         let userDetails = {
-        email:localStorage.getItem('email'),
-        key:localStorage.getItem('tokenID')
-      };
-      this.middlwareService.home(JSON.stringify(userDetails)).subscribe(
-        result=>{
-          console.log(result);
-          if(result.status==401){
-            this.router.navigateByUrl('/login');
-          }else{
-            this.isDrawChart = true;
-            this.componentInteractionService.setisShowProfile(false);
-            this.componentInteractionService.setIsDrawChart(true); 
-            this.drawHomePage(result);
-          }
-        }
-      )
+            email:localStorage.getItem('email'),
+            key:localStorage.getItem('tokenID')
+        };
+
+        this.middlwareService.home(JSON.stringify(userDetails)).subscribe(
+          result=>{
+              console.log(result);
+
+              if(result.status==401){
+                this.router.navigateByUrl('/login');
+              }else{
+                this.isDrawChart = true;
+                this.componentInteractionService.setIsShowHome(true); 
+                this.drawHomePage(result);
+              }
+          })
     }else{
       this.router.navigateByUrl('/login')
     }
@@ -92,8 +87,8 @@ export class HomeComponent implements OnInit {
       let userDetails = {
         email:localStorage.getItem('email'),
         key:localStorage.getItem('tokenID')
-      };
-      this.userDetails.name = this.userDetails.email = this.userDetails.phone = '';
+      };    
+      this.userDetails.name = this.userDetails.email = this.userDetails.phone=this.userDetails.password1=this.userDetails.password2 = '';
       localStorage.removeItem('email');
       localStorage.removeItem('tokenID');
       this.middlwareService.logout(JSON.stringify(userDetails)).subscribe(
@@ -136,17 +131,9 @@ export class HomeComponent implements OnInit {
       this.isDrawChart = true;
       this.isShowtable = false;
       this.barChartType = chartName.substring(0,chartName.indexOf(" ")).toLowerCase();
-    }
-    
+    }  
     this.chartName = chartName;
       
   }
 
-  viewProfile(){
-    this.isShowProfile = true;
-    this.isDrawChart = false;
-    this.componentInteractionService.setisShowProfile(this.isShowProfile);
-    this.componentInteractionService.setIsDrawChart(this.isDrawChart);
-  }   
- 
 }

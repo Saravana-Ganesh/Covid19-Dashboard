@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserDetails } from '../classes/UserDetails';
-import { ComponentInteractionService } from '../services/ComponentInteractionService';
 import { MiddlwareService } from '../services/middlware.service';
 
 @Component({
@@ -14,12 +13,11 @@ export class UserProfileComponent implements OnInit {
   constructor(
     public userDetails:UserDetails,
     private middelwareService:MiddlwareService,
-    private componentInteractionService:ComponentInteractionService,
     private router:Router
   ) { }
-  @Input() public parentData:any;
+
   ngOnInit(): void {
-    console.log(this.parentData);
+
     if(localStorage.getItem('email')!=null && localStorage.getItem('tokenID')!=null){
      if(this.userDetails.name == '' || this.userDetails.email =='' || this.userDetails.phone ==''){
 
@@ -27,6 +25,7 @@ export class UserProfileComponent implements OnInit {
         email:localStorage.getItem('email'),
         key:localStorage.getItem('tokenID')
       };
+      
       this.middelwareService.userProfile(userDetails).subscribe(
         result=>{
           console.log(result);
@@ -44,11 +43,5 @@ export class UserProfileComponent implements OnInit {
 
     }
     
-  }
-
-  navigateTohome(){
-    this.componentInteractionService.setIsDrawChart(true);
-    this.componentInteractionService.setisShowProfile(false);
-    //alert(this.componentInteractionService.getIsDrawChart());
   }
 }
