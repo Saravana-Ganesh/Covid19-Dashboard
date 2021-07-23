@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ChartsModule } from 'ng2-charts';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { OtpComponent } from './otp/otp.component';
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { DataTablesModule } from 'angular-datatables';
+import { CovidIndiaOrgApiDataComponent } from './covid-india-org-api-data/covid-india-org-api-data.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { DataTablesModule } from 'angular-datatables';
     SignupComponent,
     OtpComponent,
     HomeComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CovidIndiaOrgApiDataComponent
   ],
   imports: [
     BrowserModule,
@@ -38,10 +41,11 @@ import { DataTablesModule } from 'angular-datatables';
       { path: 'home', component: HomeComponent },
       { path: 'otp', component: OtpComponent },
       { path: 'profile', component: UserProfileComponent },
+      { path: 'india',component:CovidIndiaOrgApiDataComponent},
       { path: '', component: LoginComponent }
     ])
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

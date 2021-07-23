@@ -13,7 +13,7 @@ export class MiddlwareService {
     if (environment.production) {
        this.url = this.productionUrl;
     }else{
-      this.url = this.developmentUrl;
+      this.url = this.developmentUrl;         
     }
    }
   headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
@@ -35,6 +35,7 @@ export class MiddlwareService {
   //Login related services...
   login(formData:any){
     return this.httpClient.post<any>(this.url+'/login', formData, {headers: this.headers});
+    //return this.httpClient.post<any>('http://localhost:8080/login', formData, {headers: this.headers});
   }
   //Excel download Service
   downloadAsExcel(){
@@ -48,5 +49,8 @@ export class MiddlwareService {
   }
   logout(formData:any){
     return this.httpClient.post<any>(this.url+'/logout', formData, {headers: this.headers});
+  }
+  indiaData(){
+    return this.httpClient.get('https://api.covid19india.org/v4/min/data.min.json')
   }
 }
